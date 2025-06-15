@@ -1,0 +1,11 @@
+{
+  "transactions": [
+    {
+      "id": "2025-02-10T18:25:29.518Z",
+      "date": "2025-02-10",
+      "description": "House Rent",
+      "amount": 2000,
+      "type": "expense"
+    }
+  ]
+}
