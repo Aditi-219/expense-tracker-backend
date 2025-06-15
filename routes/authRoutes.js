@@ -43,8 +43,10 @@ router.post("/login", async (req, res) => {
         const validPassword = await bcrypt.compare(password, user.password);
         if (!validPassword) return res.status(401).json({ error: "Invalid Password" });
 
-        const token = jwt.sign({ userId: user._id }, JWT_SECRET, { expiresIn: "1h" });
+        const token = jwt.sign({ userId: user._id }, JWT_SECRET, { expiresIn: "30d" });
+        if (!token) return res.status(500).json({ error: "Failed to generate token" });
 
+        // 🔹 Standardize user object
         // ✅ Send user details along with token
         res.cookie("token", token, { 
             httpOnly: true, 
